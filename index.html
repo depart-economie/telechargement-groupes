@@ -58,7 +58,7 @@
   <script>
   const structure = {
     F1: {
-      name: 'السنة الأولى - تداول وأسواق مالية',
+      name: 'السنة الأولى',
       specialties: {
         'تداول وأسواق مالية': {
           cohorts: 2,
@@ -70,7 +70,7 @@
       }
     },
     F2: {
-      name: 'السنة الثانية - جذع مشترك',
+      name: 'السنة الثانية ',
       specialties: {
         'جذع مشترك': {
           cohorts: 12,
@@ -92,7 +92,7 @@
       }
     },
     L: {
-      name: 'مستوى ليسانس',
+      name: ' ليسانس',
       specialties: {
         'اقتصاد دولي': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1THkqW--d5NH8Wzk_zbGPwTl4gKhyLIGR/edit?usp=drive_link" ] },
         'اقتصاد كمي': { cohorts: 3, links: [
@@ -110,9 +110,31 @@
           "https://docs.google.com/spreadsheets/d/1IsBScCto0gfS9rWTBq8Xwcl3pGiOuuAg/edit?usp=drive_link"
         ] }
       }
+ },
+  M1: {
+    name: 'مستوى ماستر 1',
+    specialties: {
+      'اقتصاد دولي': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/16qv1JfMEZN5oSjPM74VxzNEsg84mzTWM/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] },
+      'اقتصاد كمي': { cohorts: 2, links: [ 
+        "https://docs.google.com/spreadsheets/d/1X5D7oHW3DSXHMAvPW0ogZJEDtxmK2m5A/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
+        "https://docs.google.com/spreadsheets/d/1QjwL3qywYFRg2ZFUfLJe95qibTR7CXtm/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true"
+     ] },
+      'اقتصاد نقدي ومالي': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1PrvBC8RprSgR7NMT-5Ma5Mmrb8gm4BQM/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] },
+      'اقتصاد وتسيير المؤسسات': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1nmGPvqOzSAnScVzLimiEL8tLohfxpXGf/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] },
+      'الاقتصاد الدائري': { cohorts: 1, links: [ null ] },
+      'ذكاء اقتصادي وتحليل البيانات': { cohorts: 1, links: [ null ] }
     }
-  };
-
+  },
+  M2: {
+    name: 'مستوى ماستر 2',
+    specialties: {
+      'اقتصاد دولي': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1crvQ7Teta3zYB-cEGeFBVz4NCiYGHAhr/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] },
+      'اقتصاد كمي': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1c8y1T_JDngUEI_APUNVbD_cVORIG7AdB/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] },
+      'اقتصاد نقدي ومالي': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1sv7y8-VscrIiQXFWdXBedcOO4_p8kZnp/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] },
+      'اقتصاد وتسيير المؤسسات': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1_gbipaf7pyia0VVwPXpdtjRQWkzbB0EV/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] }
+    }
+  }
+};
   function populateSpecialties(){
     const lvl = document.getElementById('levelSelect').value;
     const sel = document.getElementById('specialtySelect');
@@ -170,4 +192,5 @@
 
 </body>
 </html>
+
 
