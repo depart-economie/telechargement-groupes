@@ -11,8 +11,10 @@
   </style>
 </head>
 <body class="min-h-screen flex">
+
+  <!-- القائمة الجانبية -->
   <aside class="w-80 p-6 glass border-l border-gray-700">
-    <h1 class="text-2xl font-bold mb-4">انشاء روابط تحميل الأفواج</h1>
+    <h1 class="text-2xl font-bold mb-4">اختيار مستوى وتخصص وفوج</h1>
     <div class="space-y-4">
       <label>المستوى</label>
       <select id="levelSelect" class="w-full p-2 rounded bg-gray-800 border border-gray-700">
@@ -26,211 +28,145 @@
       <label>التخصص</label>
       <select id="specialtySelect" class="w-full p-2 rounded bg-gray-800 border border-gray-700"></select>
 
-      <label>فوج</label>
+      <label>الفوج</label>
       <select id="cohortSelect" class="w-full p-2 rounded bg-gray-800 border border-gray-700"></select>
     </div>
   </aside>
 
-  <main class="flex-1 p-8 overflow-auto flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
-  <!-- عنوان القسم في الأعلى -->
-  <div class="text-center mb-8">
-    <h1 class="text-3xl font-extrabold mb-2 text-indigo-400">قسم العلوم الاقتصادية</h1>
-    <p class="text-gray-300">روابط تحميل أفواج الطلبة حسب التخصص والمستوى</p>
-  </div>
-
   <!-- المحتوى الرئيسي -->
-  <div class="max-w-4xl w-full mx-auto">
-    <h2 class="text-xl font-bold mb-6 text-center">روابط تحميل أفواج طلبة العلوم الاقتصادية</h2>
-
-    <div class="p-6 glass rounded-lg border border-gray-700 text-center shadow-lg bg-gray-800/50 backdrop-blur">
-      <p>الفوج المختار: <strong id="currentCohortLabel">-</strong></p>
-
-      <div class="mt-4">
-        <a id="downloadLink" href="#" target="_blank"
-           class="inline-block px-6 py-3 bg-indigo-600 hover:bg-indigo-500 rounded-lg text-white font-semibold transition">
-          تحميل من Google Drive
-        </a>
-      </div>
+  <main class="flex-1 p-8 overflow-auto flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-extrabold mb-2 text-indigo-400">قسم العلوم الاقتصادية</h1>
+      <p class="text-gray-300">روابط تحميل أفواج الطلبة حسب التخصص والمستوى</p>
     </div>
 
-    <!-- قسم عرض كل الروابط -->
-    <section class="mt-8">
-      <h3 class="text-lg font-semibold mb-3 text-center text-indigo-300">كل الروابط</h3>
-      <div id="allCohortsList" class="space-y-2 text-center"></div>
-    </section>
-  </div>
-</main>
+    <div class="max-w-4xl w-full mx-auto">
+      <h2 class="text-xl font-bold mb-6 text-center">تحميل الملف الخاص بالفوج المختار</h2>
 
+      <div class="p-6 glass rounded-lg border border-gray-700 text-center shadow-lg bg-gray-800/50 backdrop-blur">
+        <p>الفوج المختار: <strong id="currentCohortLabel">-</strong></p>
+        <div class="mt-4">
+          <a id="downloadLink" href="#" target="_blank"
+             class="inline-block px-6 py-3 bg-indigo-600 hover:bg-indigo-500 rounded-lg text-white font-semibold transition">
+            تحميل من Google Drive
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
 
-<script>
-// البنية مع أماكن الروابط فارغة لتُعبئها أنت لاحقًا
-const structure = {
-  F1: {
-    name: 'السنة الأولى - تداول وأسواق مالية',
-    specialties: {
-      'تداول وأسواق مالية': { cohorts: 2, links: [ 
-        "https://docs.google.com/spreadsheets/d/1aHhbs31aM6dva2Qxd9pKfK_ZUGWGfLhY/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true", 
-        "https://docs.google.com/spreadsheets/d/1H9OhEXboeci6HvyDW9mUMiY5jsDynIHn/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true"
-     ] }
+  <script>
+  const structure = {
+    F1: {
+      name: 'السنة الأولى - تداول وأسواق مالية',
+      specialties: {
+        'تداول وأسواق مالية': {
+          cohorts: 2,
+          links: [
+            "https://docs.google.com/spreadsheets/d/1aHhbs31aM6dva2Qxd9pKfK_ZUGWGfLhY/edit?usp=drive_link",
+            "https://docs.google.com/spreadsheets/d/1H9OhEXboeci6HvyDW9mUMiY5jsDynIHn/edit?usp=drive_link"
+          ]
+        }
+      }
+    },
+    F2: {
+      name: 'السنة الثانية - جذع مشترك',
+      specialties: {
+        'جذع مشترك': {
+          cohorts: 12,
+          links: [
+            "https://docs.google.com/spreadsheets/d/1VmSTEjCGVwHez0r1oNvJqnC9WJGfFcl_/edit?usp=drive_link",
+            "https://docs.google.com/spreadsheets/d/1MzRCufDxQZMG9NXlGhgA_sYu00ykOx1K/edit?usp=drive_link",
+            "https://docs.google.com/spreadsheets/d/1wNIsH0CFMC1IpZULLWu9dI2GL0X-Qu50/edit?usp=drive_link",
+            "https://docs.google.com/spreadsheets/d/1oMaJkOGGsH8se-om9jYQvDN8Jmw4Z0CL/edit?usp=drive_link",
+            "https://docs.google.com/spreadsheets/d/1r7ql2eSaTfiPET1CBYUhfZKYlObWh8-_/edit?usp=drive_link",
+            "https://docs.google.com/spreadsheets/d/1SAhAvKWkKMA6y_y9pKtcD_6k-W50_TIZ/edit?usp=drive_link",
+            "https://docs.google.com/spreadsheets/d/1yvmMWyAyKdNqOq_Wf1aBntlCaIylkRB2/edit?usp=drive_link",
+            "https://docs.google.com/spreadsheets/d/1CQX_UbuHnRkz3czNfkdpNSf5yWgh9g1A/edit?usp=drive_link",
+            "https://docs.google.com/spreadsheets/d/1jg9HxT45pnfc-rnwTWV74DxCZMtd3AOR/edit?usp=drive_link",
+            "https://docs.google.com/spreadsheets/d/1k4XDw8S0SYX74v2IruzRaPES3mlGAImV/edit?usp=drive_link",
+            "https://docs.google.com/spreadsheets/d/1oQFOLCFs5tUaJmfsgvg04bKS7BK5_yAY/edit?usp=drive_link",
+            "https://docs.google.com/spreadsheets/d/1_qquWyWBjKtYN9p3tPBVYQClZWtWz37R/edit?usp=drive_link"
+          ]
+        }
+      }
+    },
+    L: {
+      name: 'مستوى ليسانس',
+      specialties: {
+        'اقتصاد دولي': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1THkqW--d5NH8Wzk_zbGPwTl4gKhyLIGR/edit?usp=drive_link" ] },
+        'اقتصاد كمي': { cohorts: 3, links: [
+          "https://docs.google.com/spreadsheets/d/1xp4taUjh7jJggjD2zZzOilxnNBS3w1_E/edit?usp=drive_link",
+          "https://docs.google.com/spreadsheets/d/1NqZWE3ZnyZ4EkilGtbj-IknwYGtktVwy/edit?usp=drive_link",
+          "https://docs.google.com/spreadsheets/d/1axZh8sojYLeGtEX7GUh10lGtMxRbVkw3/edit?usp=drive_link"
+        ] },
+        'اقتصاد نقدي ومالي': { cohorts: 2, links: [
+          "https://docs.google.com/spreadsheets/d/1pgTHRwQa-mpqqzixAXxfJE_VXA0uvdov/edit?usp=drive_link",
+          "https://docs.google.com/spreadsheets/d/1JcmzWp2oiFfOefFHiBLKYOkD12xfaV3S/edit?usp=drive_link"
+        ] },
+        'اقتصاد وتسيير المؤسسات': { cohorts: 3, links: [
+          "https://docs.google.com/spreadsheets/d/1vTX8bODYZTHQCOBHRobsqEtlPeaFSaKy/edit?usp=drive_link",
+          "https://docs.google.com/spreadsheets/d/1TYImcrNUshyKl1oAlLU3bRLdZcvre4QD/edit?usp=drive_link",
+          "https://docs.google.com/spreadsheets/d/1IsBScCto0gfS9rWTBq8Xwcl3pGiOuuAg/edit?usp=drive_link"
+        ] }
+      }
     }
-  },
-  F2: {
-    name: 'السنة الثانية - جذع مشترك',
-    specialties: {
-      'جذع مشترك': { cohorts: 12, links: [
-  "https://docs.google.com/spreadsheets/d/1VmSTEjCGVwHez0r1oNvJqnC9WJGfFcl_/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1MzRCufDxQZMG9NXlGhgA_sYu00ykOx1K/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1wNIsH0CFMC1IpZULLWu9dI2GL0X-Qu50/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1oMaJkOGGsH8se-om9jYQvDN8Jmw4Z0CL/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1r7ql2eSaTfiPET1CBYUhfZKYlObWh8-_/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1SAhAvKWkKMA6y_y9pKtcD_6k-W50_TIZ/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1yvmMWyAyKdNqOq_Wf1aBntlCaIylkRB2/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1CQX_UbuHnRkz3czNfkdpNSf5yWgh9g1A/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1jg9HxT45pnfc-rnwTWV74DxCZMtd3AOR/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1k4XDw8S0SYX74v2IruzRaPES3mlGAImV/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1oQFOLCFs5tUaJmfsgvg04bKS7BK5_yAY/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1_qquWyWBjKtYN9p3tPBVYQClZWtWz37R/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true"
-] }
-    }
-  },
-  L: {
-    name: 'مستوى ليسانس',
-    specialties: {
-      'اقتصاد دولي': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1THkqW--d5NH8Wzk_zbGPwTl4gKhyLIGR/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] },
-      'اقتصاد كمي': { cohorts: 3, links: [
-  "https://docs.google.com/spreadsheets/d/1xp4taUjh7jJggjD2zZzOilxnNBS3w1_E/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1NqZWE3ZnyZ4EkilGtbj-IknwYGtktVwy/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1axZh8sojYLeGtEX7GUh10lGtMxRbVkw3/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true"
-] },
-      'اقتصاد نقدي ومالي': { cohorts: 2, links: [
-  "https://docs.google.com/spreadsheets/d/1pgTHRwQa-mpqqzixAXxfJE_VXA0uvdov/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1JcmzWp2oiFfOefFHiBLKYOkD12xfaV3S/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true"
-] },
-      'اقتصاد وتسيير المؤسسات': { cohorts: 3, links: [
-  "https://docs.google.com/spreadsheets/d/1vTX8bODYZTHQCOBHRobsqEtlPeaFSaKy/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1TYImcrNUshyKl1oAlLU3bRLdZcvre4QD/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-  "https://docs.google.com/spreadsheets/d/1IsBScCto0gfS9rWTBq8Xwcl3pGiOuuAg/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true"
-] }
-    }
-  },
-  M1: {
-    name: 'مستوى ماستر 1',
-    specialties: {
-      'اقتصاد دولي': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/16qv1JfMEZN5oSjPM74VxzNEsg84mzTWM/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] },
-      'اقتصاد كمي': { cohorts: 2, links: [ 
-        "https://docs.google.com/spreadsheets/d/1X5D7oHW3DSXHMAvPW0ogZJEDtxmK2m5A/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true",
-        "https://docs.google.com/spreadsheets/d/1QjwL3qywYFRg2ZFUfLJe95qibTR7CXtm/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true"
-     ] },
-      'اقتصاد نقدي ومالي': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1PrvBC8RprSgR7NMT-5Ma5Mmrb8gm4BQM/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] },
-      'اقتصاد وتسيير المؤسسات': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1nmGPvqOzSAnScVzLimiEL8tLohfxpXGf/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] },
-      'الاقتصاد الدائري': { cohorts: 1, links: [ null ] },
-      'ذكاء اقتصادي وتحليل البيانات': { cohorts: 1, links: [ null ] }
-    }
-  },
-  M2: {
-    name: 'مستوى ماستر 2',
-    specialties: {
-      'اقتصاد دولي': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1crvQ7Teta3zYB-cEGeFBVz4NCiYGHAhr/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] },
-      'اقتصاد كمي': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1c8y1T_JDngUEI_APUNVbD_cVORIG7AdB/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] },
-      'اقتصاد نقدي ومالي': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1sv7y8-VscrIiQXFWdXBedcOO4_p8kZnp/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] },
-      'اقتصاد وتسيير المؤسسات': { cohorts: 1, links: [ "https://docs.google.com/spreadsheets/d/1_gbipaf7pyia0VVwPXpdtjRQWkzbB0EV/edit?usp=drive_link&ouid=115846661995399852216&rtpof=true&sd=true" ] }
-    }
-  }
-};
+  };
 
-function populateSpecialties(){
-  const lvl = document.getElementById('levelSelect').value;
-  const sel = document.getElementById('specialtySelect');
-  sel.innerHTML = '';
-  const specs = structure[lvl].specialties;
-  for (const sp in specs){
-    const opt = document.createElement('option');
-    opt.value = sp;
-    opt.textContent = sp;
-    sel.appendChild(opt);
-  }
-  populateCohorts();
-}
-
-function populateCohorts(){
-  const lvl = document.getElementById('levelSelect').value;
-  const sp = document.getElementById('specialtySelect').value;
-  const info = structure[lvl].specialties[sp];
-  const cohortSel = document.getElementById('cohortSelect');
-  cohortSel.innerHTML = '';
-  for (let i = 1; i <= info.cohorts; i++){
-    const opt = document.createElement('option');
-    opt.value = i - 1; // نستخدم فهارس من 0
-    opt.textContent = `فوج ${i}`;
-    cohortSel.appendChild(opt);
-  }
-  refreshCurrentLink();
-  renderAllLinksList();
-}
-
-function refreshCurrentLink(){
-  const lvl = document.getElementById('levelSelect').value;
-  const sp = document.getElementById('specialtySelect').value;
-  const idx = parseInt(document.getElementById('cohortSelect').value, 10);
-  const info = structure[lvl].specialties[sp];
-  const link = info.links[idx];
-  const label = `${structure[lvl].name} / ${sp} / فوج ${idx + 1}`;
-  document.getElementById('currentCohortLabel').textContent = label;
-  const a = document.getElementById('downloadLink');
-  if (link){
-    a.href = link;
-    a.classList.remove('opacity-50');
-    a.classList.remove('pointer-events-none');
-  } else {
-    a.href = '#';
-    a.classList.add('opacity-50');
-    a.classList.add('pointer-events-none');
-  }
-}
-
-// عرض كل الأفواج مع روابطها
-function renderAllLinksList(){
-  const container = document.getElementById('allCohortsList');
-  container.innerHTML = '';
-  for (const lvl in structure){
-    const lvlDiv = document.createElement('div');
-    lvlDiv.innerHTML = `<div class="font-semibold mt-4">${structure[lvl].name}</div>`;
-    container.appendChild(lvlDiv);
+  function populateSpecialties(){
+    const lvl = document.getElementById('levelSelect').value;
+    const sel = document.getElementById('specialtySelect');
+    sel.innerHTML = '';
     const specs = structure[lvl].specialties;
     for (const sp in specs){
-      const spDiv = document.createElement('div');
-      spDiv.className = 'mr-4';
-      spDiv.innerHTML = `<div class="text-sm text-gray-300 mt-2">${sp}</div>`;
-      const info = specs[sp];
-      for (let i = 0; i < info.cohorts; i++){
-        const link = info.links[i];
-        const btn = document.createElement('a');
-        btn.textContent = `تحميل فوج ${i+1}`;
-        btn.className = 'inline-block px-3 py-1 m-1 bg-indigo-600 hover:bg-indigo-500 rounded text-sm text-white';
-        if (link){
-          btn.href = link;
-          btn.target = '_blank';
-        } else {
-          btn.href = '#';
-          btn.classList.add('opacity-50', 'pointer-events-none');
-        }
-        spDiv.appendChild(btn);
-      }
-      container.appendChild(spDiv);
+      const opt = document.createElement('option');
+      opt.value = sp;
+      opt.textContent = sp;
+      sel.appendChild(opt);
+    }
+    populateCohorts();
+  }
+
+  function populateCohorts(){
+    const lvl = document.getElementById('levelSelect').value;
+    const sp = document.getElementById('specialtySelect').value;
+    const info = structure[lvl].specialties[sp];
+    const cohortSel = document.getElementById('cohortSelect');
+    cohortSel.innerHTML = '';
+    for (let i = 1; i <= info.cohorts; i++){
+      const opt = document.createElement('option');
+      opt.value = i - 1;
+      opt.textContent = `فوج ${i}`;
+      cohortSel.appendChild(opt);
+    }
+    refreshCurrentLink();
+  }
+
+  function refreshCurrentLink(){
+    const lvl = document.getElementById('levelSelect').value;
+    const sp = document.getElementById('specialtySelect').value;
+    const idx = parseInt(document.getElementById('cohortSelect').value, 10);
+    const info = structure[lvl].specialties[sp];
+    const link = info.links[idx];
+    const label = `${structure[lvl].name} / ${sp} / فوج ${idx + 1}`;
+    document.getElementById('currentCohortLabel').textContent = label;
+    const a = document.getElementById('downloadLink');
+    if (link){
+      a.href = link;
+      a.classList.remove('opacity-50', 'pointer-events-none');
+    } else {
+      a.href = '#';
+      a.classList.add('opacity-50', 'pointer-events-none');
     }
   }
-}
 
-// عند تغيّر أي اختيار
-document.getElementById('levelSelect').addEventListener('change', ()=> { populateSpecialties(); });
-document.getElementById('specialtySelect').addEventListener('change', ()=> { populateCohorts(); });
-document.getElementById('cohortSelect').addEventListener('change', ()=> { refreshCurrentLink(); });
+  document.getElementById('levelSelect').addEventListener('change', populateSpecialties);
+  document.getElementById('specialtySelect').addEventListener('change', populateCohorts);
+  document.getElementById('cohortSelect').addEventListener('change', refreshCurrentLink);
 
-// تهيئة أولية
-populateSpecialties();
-refreshCurrentLink();
-renderAllLinksList();
+  populateSpecialties();
+  refreshCurrentLink();
+  </script>
 
-</script>
 </body>
 </html>
